@@ -51,3 +51,8 @@ div.tooltip {
     box-shadow: 2px 2px lightgray;
     pointer-events: none;
 }
+
+/* select {
+    overflow-y: scroll;
+    max-height: 200px;
+} */

@@ -26,7 +26,7 @@ window.onload = function () {
 }
 
 function selectPrev() {
-  let select = document.getElementById('year');
+  var select = document.getElementById('year');
   if (select.selectedIndex > 0) {
     select.selectedIndex--;
   }
@@ -34,7 +34,7 @@ function selectPrev() {
 }
 
 function selectNext() {
-  let select = document.getElementById('year');
+  var select = document.getElementById('year');
   console.log(select.length);
   if (select.selectedIndex < select.length - 1) {
     select.selectedIndex++;
@@ -50,8 +50,10 @@ function populateOptions(data, yearOption, countryOption) {
     for (let i = 0; i < data.length; i++) {
       let k = data[i];
       uniqueYears.add(k['time']);
-      uniqueCountries.add(k['location']); 
+      uniqueCountries.add(k['location']);
+      console.log(k['location']);
     }
+    console.log(uniqueCountries);
     uniqueYears.forEach(year => { yearOption.options[yearOption.options.length] = new Option(year); });
     uniqueCountries.forEach(country => { countryOption.options[countryOption.options.length] = new Option(country); });
   }
@@ -59,10 +61,7 @@ function populateOptions(data, yearOption, countryOption) {
 
 function selectData() {
   let yearOption = document.getElementById('year');
-  let countryOption = document.getElementById('country');
   let year = yearOption.options[yearOption.selectedIndex].text;
-  let country = countryOption.options[countryOption.selectedIndex].text;
-
   d3.selectAll("svg").remove();
 
   if (year !== 'Choose...') {
@@ -73,15 +72,14 @@ function selectData() {
       .attr("height", height + margin.top + margin.bottom);
 
     d3.csv(dataPath)
-      .then(data => filterData(data, year, country))
+      .then(data => filterYear(data, year))
       .then(dataSet => drawPlot(dataSet, xFeature, yFeature));
   }
 }
 
-function filterData(data, year, country) {
+function filterYear(data, year) {
   let filteredData = data.filter(dataPoint => {
-    if (country == 'All') return dataPoint['time'] == year;
-    else return dataPoint['time'] == year && dataPoint['location'] == country;
+    return dataPoint['time'] == year;
   });
   return [data, filteredData];
 }

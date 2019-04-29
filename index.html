@@ -25,12 +25,18 @@
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" onclick="selectPrev()">&#8249;</button>
     </div>
-    <select class="custom-select" id="year" onchange="selectData()">
+    <select id="year" class="custom-select" onchange="selectData()">
       <option selected>Choose...</option>
     </select>
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button"  onclick="selectNext()">&#8250;</button>
     </div>
+  </div>
+  <div class="input-group mb-3">
+      <label for="country" class="col-sm-3 col-form-label">Country:</label>
+      <select id="country" class="custom-select" onchange="selectData()">
+          <option selected>All</option>
+      </select>
   </div>
 </body>
 
