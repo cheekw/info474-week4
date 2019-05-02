@@ -1,7 +1,7 @@
 'use-strict';
 
 // path to where the csv data is located
-let dataPath = "./data/dataEveryYear.csv";
+let dataPath = "./data/data.csv";
 
 // chart features
 let xFeature = "fertility_rate";
