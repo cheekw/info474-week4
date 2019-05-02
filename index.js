@@ -126,7 +126,7 @@ function drawPoints(filteredData, scaleValues, zFeature) {
       div.transition()
         .duration(200)
         .style("opacity", .9);
-      div.html("Country: " + d.location + "<br/>" + "Population: " + numberWithCommas(d[zFeature] * 1000000))
+      div.html("Country: " + d.location + "<br/>" + "Population: " + numberWithCommas(Math.round(d[zFeature] * 1000000)))
         .style("left", (d3.event.pageX) + "px")
         .style("top", (d3.event.pageY - 28) + "px");
     })
