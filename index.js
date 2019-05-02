@@ -35,7 +35,6 @@ function selectPrev() {
 
 function selectNext() {
   let select = document.getElementById('year');
-  console.log(select.length);
   if (select.selectedIndex < select.length - 1) {
     select.selectedIndex++;
   }
